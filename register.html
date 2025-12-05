@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>הרשמה – FutureWize</title>
+
+  <link rel="stylesheet" href="designcss.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-right">
+        <a href="index.html">
+            <img src="images/logo.png" alt="FutureWize Logo" class="logo-img">
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html">בית</a>
+            <a href="about.html">אודות</a>
+            <a href="products.html">תוכניות</a>
+            <a href="gallery.html">גלריית תמונות</a>
+            <a href="contact.html">צור קשר</a>
+        </nav>
+    </div>
+
+    <div class="nav-left">
+        <a href="login.html" class="nav-btn login-btn">התחברות</a>
+        <a href="register.html" class="nav-btn register-btn">הרשמה</a>
+    </div>
+</header>
+
+<!-- REGISTER SECTION -->
+<section class="form-container">
+
+    <h1>הרשמה למערכת</h1>
+    <p>הצטרפו אלינו וקבלו גישה להזמנות, סדנאות ואזור אישי</p>
+
+    <form class="register-form" data-js="register-form">
+
+        <label>שם מלא:</label>
+        <input type="text" name="fullname" placeholder="הכנס שם מלא" required>
+
+        <label>אימייל:</label>
+        <input type="email" name="email" placeholder="name@example.com" required>
+
+        <label>סיסמה:</label>
+        <input type="password" name="password" placeholder="••••••••" required>
+
+        <label>אישור סיסמה:</label>
+        <input type="password" name="password2" placeholder="חזור על הסיסמה" required>
+
+        <button type="submit" class="btn">צור חשבון</button>
+
+        <p class="form-switch">
+            כבר יש לכם חשבון?
+            <a href="login.html">התחברו כאן</a>
+        </p>
+
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    © 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר
+</footer>
+
+</body>
+</html>

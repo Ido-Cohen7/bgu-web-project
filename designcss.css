@@ -1,0 +1,442 @@
+/* IMPORT FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Heebo:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* -------------------------------- */
+/*       GLOBAL PAGE SETTINGS       */
+/* -------------------------------- */
+
+/* מניעת גלילה אופקית */
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden !important;
+}
+
+/* צבעי המותג */
+:root {
+    --primary: #181C28;      /* רקע כהה */
+    --accent: #00D6A3;       /* ירוק הלוגו */
+    --background: #F5F7FA;   /* רקע כללי */
+    --white: #ffffff;
+    --heading: #0A223A;      /* כיתוב כהה */
+    --mint: #A8F5E1; /* טורקיז מנטה בהיר */
+
+
+}
+
+/* גוף האתר */
+body {
+    font-family: 'Heebo', 'Alef', 'Open Sans', sans-serif;
+    background: var(--background);
+    color: var(--heading);
+    direction: rtl;
+}
+
+/* כותרות */
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--heading);
+}
+
+h2, h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--heading);
+}
+
+p, label, input, select, a {
+    font-size: 16px;
+}
+
+/* -------------------------------- */
+/*             NAVBAR               */
+/* -------------------------------- */
+
+.navbar {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* צד ימין: לוגו + תפריט */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;  /* חשוב כדי למנוע יציאה מהמסך */
+}
+
+/* לוגו */
+.logo-img {
+    height: 45px;     /* חדש - קטן יותר */
+    width: auto;
+    max-width: 180px; /* לא יגדול מעבר לזה */
+}
+
+
+/* תפריט */
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+    transition: 0.3s;
+}
+
+/* צד שמאל: התחברות / הרשמה */
+.nav-left {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* כפתור התחברות */
+.login-btn {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.login-btn:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+/* כפתור הרשמה */
+.register-btn {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+.register-btn:hover {
+    background: var(--white);
+    color: var(--primary);
+}
+
+/* -------------------------------- */
+/*            HERO SECTION          */
+/* -------------------------------- */
+
+.hero {
+    padding: 160px 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero h1 {
+    color: var(--primary);
+}
+
+.hero p {
+    font-size: 18px;
+    color: var(--heading);
+}
+
+/* כפתור ראשי */
+.btn {
+    background-color: var(--primary);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: var(--accent);
+    color: var(--primary);
+    transition: 0.3s;
+}
+
+/* -------------------------------- */
+/*         PRODUCT CARDS            */
+/* -------------------------------- */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;  /* מונע גלילה */
+}
+
+.product-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
+    max-width: 100%;
+}
+
+/* -------------------------------- */
+/*              FORMS               */
+/* -------------------------------- */
+
+.form-container {
+    max-width: 450px;
+    margin: 80px auto;
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.12);
+    text-align: right;
+}
+
+.form-container h1 {
+    color: var(--primary);
+}
+
+.form-container p {
+    color: var(--heading);
+    margin-bottom: 20px;
+}
+
+.register-form label {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.register-form input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.form-container .btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-switch a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* -------------------------------- */
+/*              FOOTER              */
+/* -------------------------------- */
+
+.footer {
+    background: var(--primary);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/*Product Part*/
+.program-card-link {
+    text-decoration: none;
+    background-color: var(--accent);
+    color: #181C28;
+    transition: 0.3s;
+}
+
+.program-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    background-color: var(--background);
+    
+}
+
+
+.product-card {
+    background: var(--accent);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.1);
+    overflow: hidden; /* חשוב! חותך את התמונה לפי פינות הכרטיס */
+    padding: 0; /* מסיר רווחים */
+}
+
+/* תמונה בראש הכרטיס */
+.program-img {
+    width: 100%;
+    height: 180px; /* אתה יכול לשנות לגובה שאתה מעדיף */
+    object-fit: cover; /* מבטיח שהתמונה תמלא את כל הרוחב ותיחתך יפה */
+    display: block;
+}
+
+
+/* ============================= */
+/*        ABOUT – HERO AREA      */
+/* ============================= */
+
+.about-hero {
+    position: relative;
+    background-image: url('/images/about\ photo\ .jpg'); 
+    background-size: cover;
+    background-position: center top; /* מציג את גל + מאי */
+    height: 380px; /* אפשר להגדיל/להקטין בהתאם */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--white);
+}
+
+/* שכבת שקיפות מעל התמונה */
+.about-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55); /* רמת שקיפות גבוהה יותר */
+    z-index: 0;
+}
+
+/* מוודא שהטקסט מעל השקיפות */
+.about-hero * {
+    position: relative;
+    z-index: 2;
+}
+
+/* כותרת מי אנחנו */
+.about-hero h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+/* טקסט מתחת לכותרת */
+.about-hero p {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--white);
+}
+
+
+/* ============================= */
+/*        TEAM SECTION           */
+/* ============================= */
+
+.team-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.team-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--primary);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 25px;
+    text-align: center;
+}
+
+.team-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+
+/* ============================= */
+/*        OFFER SECTION          */
+/* ============================= */
+
+.offer-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.offer-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.offer-section p {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--heading);
+}
+
+
+/* ============================= */
+/*      FADE-IN ANIMATION        */
+/* ============================= */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.fade-in-delay {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: fadeInUp 1.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
