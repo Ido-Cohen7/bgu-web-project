@@ -10,7 +10,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden !important;
+   /* overflow-x: hidden; */
 }
 
 /* צבעי המותג */
@@ -436,6 +436,169 @@ p, label, input, select, a {
         transform: translateY(0);
     }
 }
+
+
+/* -------------------------------- */
+/*       CONTACT SECTION       */
+/* -------------------------------- */
+
+.contact-header {
+    width: 100%;
+    text-align: center;
+    margin: 50px auto 20px auto;
+    padding: 0;
+}
+
+.contact-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 10px;
+    text-align: center !important;
+}
+
+.contact-header p {
+    font-size: 18px;
+    color: var(--heading);
+    text-align: center !important;
+}
+
+
+/* -------------------------------- */
+/*         CONTACT WRAPPER          */
+/* -------------------------------- */
+
+.contact-wrapper {
+    max-width: 700px;
+    margin: 30px auto 60px auto;
+    padding: 0 20px;
+}
+
+
+/* -------------------------------- */
+/*          CONTACT CARD            */
+/* -------------------------------- */
+
+.unified-contact {
+    background: var(--mint);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.unified-contact h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+
+/* -------------------------------- */
+/*            ICONS ROW             */
+/* -------------------------------- */
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.contact-icon {
+    font-size: 34px;
+    color: var(--primary);
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+.contact-icon:hover {
+    color: var(--accent);
+    transform: scale(1.15);
+}
+
+
+/* -------------------------------- */
+/*          CONTACT DETAILS         */
+/* -------------------------------- */
+
+.contact-details p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: var(--heading);
+}
+
+
+
+/* -------------------------------- */
+/*       LOGIN SECTION       */
+/* -------------------------------- */
+
+/* -------------------------------- */
+/*           LOGIN SECTION          */
+/* -------------------------------- */
+
+/* -------------------------------- */
+/*           LOGIN SECTION          */
+/* -------------------------------- */
+
+.form-container {
+    max-width: 450px;
+    margin: 80px auto;
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 14px rgba(0,0,0,0.12);
+    text-align: right;
+}
+
+.form-container h1 {
+    color: var(--primary);
+}
+
+.form-container p {
+    color: var(--heading);
+    margin-bottom: 20px;
+}
+
+.register-form label {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.register-form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.register-form input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.form-container .btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-switch a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+
+
 
 
 
