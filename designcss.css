@@ -259,6 +259,120 @@ p, label, input, select, a {
     margin-top: 40px;
 }
 
+/* ============================= */
+/*      TESTIMONIALS SECTION     */
+/* ============================= */
+
+.testimonials {
+    padding: 60px 20px;
+    text-align: center;
+    background: var(--background);
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--primary);
+}
+
+.testimonial-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.testimonial-content {
+    background: var(--white);
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    max-width: 550px;
+}
+
+.testimonial-content p {
+    font-size: 18px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--heading);
+    margin-bottom: 15px;
+}
+
+/* כוכבים */
+#stars {
+    font-size: 22px;
+    color: var(--accent);
+}
+
+/* חיצים */
+.testimonial-box button {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: var(--primary);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.testimonial-box button:hover {
+    color: var(--accent);
+    transform: scale(1.2);
+}
+
+/* ============================= */
+/*      TESTIMONIALS SECTION     */
+/* ============================= */
+
+.testimonials {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.testimonial-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 900px;
+}
+
+.testimonial-card {
+    background: var(--white);
+    padding: 25px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.testimonial-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.stars {
+    font-size: 20px;
+    color: var(--accent);
+}
+
+.testimonial-box button {
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+
 
 /*Product Part*/
 .program-card-link {
@@ -292,6 +406,24 @@ p, label, input, select, a {
     object-fit: cover; /* מבטיח שהתמונה תמלא את כל הרוחב ותיחתך יפה */
     display: block;
 }
+
+/* ============================= */
+/*   PRODUCT CARD – INFO HOVER   */
+/* ============================= */
+
+.card-content {
+    padding: 20px;
+    min-height: 200px; /* שומר על גובה אחיד גם בהחלפת תוכן */
+    transition: 0.3s ease;
+}
+
+.card-content p {
+    margin: 0;
+}
+
+
+
+
 
 
 /* ============================= */

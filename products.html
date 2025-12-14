@@ -8,6 +8,10 @@
 
 <body>
 
+<!-- ========================== -->
+<!--         NAVBAR             -->
+<!-- ========================== -->
+
 <header class="navbar">
     <div class="nav-right">
         <a href="index.html">
@@ -24,55 +28,156 @@
     </div>
 
     <div class="nav-left">
-        <a href="login.html" class="nav-btn login-btn">התחברות</a>
-        <a href="register.html" class="nav-btn register-btn">הרשמה</a>
+        <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
+
+        <button id="logoutBtn"
+                onclick="logout()"
+                style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
+            התנתקות
+        </button>
+
+        <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
+        <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
     </div>
 </header>
+
+<!-- ========================== -->
+<!--            HERO            -->
+<!-- ========================== -->
 
 <section class="hero" style="padding: 80px 20px;">
     <h1>התוכניות שלנו</h1>
     <p>בחרו את סוג הסדנה או התחרות המתאימה לבית הספר שלכם</p>
 </section>
 
-<!-- GRID תוכניות -->
+<!-- ========================== -->
+<!--        PROGRAMS GRID       -->
+<!-- ========================== -->
+
 <section class="products-grid">
 
-    <a href="program1.html" class="product-card program-card-link">
-        <img src="./images/IMG-4.jpg" alt="תיאור הסדנה" class="program-img">
-        <h3>סדנת יזמות – כיתתית</h3>
-        <p>סדנה חווייתית בה התלמידים עוברים תהליך מלא מרעיון למיזם.</p>
-    </a>
+    <!-- 1. יזמות כיתתית -->
+    <div class="product-card program-card-link">
+        <img src="./images/IMG-4.jpg" alt="סדנת יזמות כיתתית" class="program-img">
 
-    <a href="program2.html" class="product-card program-card-link">
-          <img src="./images/IMG-2.jpg" alt="תיאור הסדנה" class="program-img">
-        <h3>סדנת חינוך פיננסי – כיתתית</h3>
-        <p>למידה חווייתית בנושאי תקציב, צרכנות נבונה וחיי כלכלה אמיתית.</p>
-    </a>
+        <div class="card-content"
+             data-info="משך הסדנה: 3 שעות
+מספר משתתפים מקסימלי: עד 30
+מתאים לכיתות: ז׳–ט׳
+עלות: 2,000 ש״ח
 
-    <a href="program3.html" class="product-card program-card-link">
-                  <img src="./images/IMG-3.jpg" alt="תיאור הסדנה" class="program-img">
-        <h3>סדנת יזמות – שכבתית</h3>
-        <p>עבודה בקבוצות גדולות, Pitch מול שופטים וחוויית חדשנות רחבה.</p>
-    </a>
+סדנה חווייתית בה התלמידים נחשפים לעולם היזמות דרך עבודה קבוצתית וחשיבה יצירתית.
+התלמידים לומדים לזהות בעיות מהעולם האמיתי ולהציע להן פתרונות חדשניים.">
 
-    <a href="program4.html" class="product-card program-card-link">
-                  <img src="./images/תמונת ילד מחשבון.jpeg" alt="תיאור הסדנה" class="program-img">
+            <h3>סדנת יזמות – כיתתית</h3>
+            <p>סדנה חווייתית בה התלמידים עוברים תהליך מלא מרעיון למיזם.</p>
+        </div>
+    </div>
 
-        <h3>סדנת חינוך פיננסי – שכבתית</h3>
-        <p>תחרות פיננסית בין כיתות, פעילויות משחקיות והבנה מעשית של כסף.</p>
-    </a>
+    <!-- 2. פיננסי כיתתי -->
+    <div class="product-card program-card-link">
+        <img src="./images/IMG-2.jpg" alt="סדנת חינוך פיננסי כיתתית" class="program-img">
 
-    <a href="program5.html" class="product-card program-card-link">
-                          <img src="./images/IMG - 8.jpg " alt="תיאור הסדנה" class="program-img">
-        <h3>תחרות חדשנות / האקתון</h3>
-        <p>אירוע שיא לבתי ספר – יצירתיות, טכנולוגיה ושיתוף פעולה בין שכבות.</p>
-    </a>
+        <div class="card-content"
+             data-info="משך הסדנה: 3 שעות
+מספר משתתפים מקסימלי: עד 30
+מתאים לכיתות: ז׳–ט׳
+עלות: 2,000 ש״ח
+
+סדנה מעשית המעניקה לתלמידים כלים בסיסיים לניהול כסף וקבלת החלטות כלכליות.
+הלמידה מתבצעת באמצעות סימולציות ודוגמאות מחיי היום־יום.">
+
+            <h3>סדנת חינוך פיננסי – כיתתית</h3>
+            <p>למידה חווייתית בנושאי תקציב, צרכנות נבונה וחיי כלכלה אמיתית.</p>
+        </div>
+    </div>
+
+    <!-- 3. יזמות שכבתית -->
+    <div class="product-card program-card-link">
+        <img src="./images/IMG-3.jpg" alt="סדנת יזמות שכבתית" class="program-img">
+
+        <div class="card-content"
+             data-info="משך הסדנה: כ־4 שעות
+מספר משתתפים מקסימלי: עד 120
+מתאים לכיתות: ח׳–י׳
+עלות: 6,000 ש״ח
+
+פעילות יזמות רחבה לשכבה שלמה הכוללת עבודה בצוותים, פיתוח רעיונות ותרגול הצגה.
+הסדנה מעודדת עבודת צוות, מנהיגות וחשיבה מחוץ לקופסה.">
+
+            <h3>סדנת יזמות – שכבתית</h3>
+            <p>עבודה בקבוצות גדולות, Pitch מול שופטים וחוויית חדשנות רחבה.</p>
+        </div>
+    </div>
+
+    <!-- 4. פיננסי שכבתית -->
+    <div class="product-card program-card-link">
+        <img src="./images/תמונת ילד מחשבון.jpeg" alt="סדנת חינוך פיננסי שכבתית" class="program-img">
+
+        <div class="card-content"
+             data-info="משך הסדנה: כ־4 שעות
+מספר משתתפים מקסימלי: עד 120
+מתאים לכיתות: ח׳–י׳
+עלות: 6,000 ש״ח
+
+סדנה אינטראקטיבית המשלבת משחקים ותחרויות בין כיתות בנושאי כלכלה וכסף.
+התלמידים לומדים על אחריות כלכלית, תכנון לטווח ארוך ועבודת צוות.">
+
+            <h3>סדנת חינוך פיננסי – שכבתית</h3>
+            <p>תחרות פיננסית בין כיתות והבנה מעשית של כסף.</p>
+        </div>
+    </div>
+
+    <!-- 5. האקתון -->
+    <div class="product-card program-card-link">
+        <img src="./images/IMG - 8.jpg" alt="האקתון חדשנות" class="program-img">
+
+        <div class="card-content"
+             data-info="משך הסדנה: יום מלא
+מספר משתתפים מקסימלי: עד 150
+מתאים לכיתות: ט׳–י״ב
+עלות: 10,000 ש״ח
+
+אירוע שיא חווייתי בו תלמידים עובדים בצוותים על פיתוח רעיונות חדשניים בזמן מוגבל.
+הפעילות כוללת ליווי מקצועי והצגת פתרונות בפני צוות שופטים.">
+
+            <h3>תחרות חדשנות / האקתון</h3>
+            <p>אירוע שיא לבתי ספר – יצירתיות, טכנולוגיה ושיתוף פעולה.</p>
+        </div>
+    </div>
 
 </section>
+
+<!-- ========================== -->
+<!--           FOOTER           -->
+<!-- ========================== -->
 
 <footer class="footer">
     <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
 </footer>
+
+<!-- ========================== -->
+<!--        SCRIPTS             -->
+<!-- ========================== -->
+
+<script src="auth.js"></script>
+
+<script>
+    const cards = document.querySelectorAll(".card-content");
+
+    cards.forEach(card => {
+        const originalHTML = card.innerHTML;
+        const infoHTML = card.dataset.info.replaceAll("\n", "<br>");
+
+        card.addEventListener("mouseenter", () => {
+            card.innerHTML = `<p style="font-size:14px; line-height:1.6;">${infoHTML}</p>`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.innerHTML = originalHTML;
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -3,69 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <title>FutureWize - דף הבית</title>
-
-  <!-- קובץ העיצוב הכללי -->
   <link rel="stylesheet" href="designcss.css">
 </head>
+
 <body>
 
-  <!-- סרגל ניווט -->
-  <header class="navbar">
-    <div class="nav-right">
-      <!-- לוגו (ודא שהתמונה בשם images/logo.png) -->
-      <a href="index.html">
-        <img src="images/logo image.jpg"FutureWize Logo" class="logo-img">
-      </a>
+<!-- ========================== -->
+<!--         NAVBAR             -->
+<!-- ========================== -->
 
-      <nav class="nav-links">
-        <a href="index.html">בית</a>
-        <a href="about.html">אודות</a>
-        <a href="products.html">תוכניות</a>
-        <a href="gallery.html">גלריית תמונות</a>
-        <a href="contact.html">צור קשר</a>
-      </nav>
+<header class="navbar">
+  <div class="nav-right">
+    <a href="index.html">
+      <img src="images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="products.html">תוכניות</a>
+      <a href="gallery.html">גלריית תמונות</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+  </div>
+
+  <div class="nav-left">
+    <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
+
+    <button id="logoutBtn"
+            onclick="logout()"
+            style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
+      התנתקות
+    </button>
+
+    <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
+    <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
+  </div>
+</header>
+
+<!-- ========================== -->
+<!--         HERO               -->
+<!-- ========================== -->
+
+<section class="hero">
+  <h1>יוצרים דור חדש של יזמים צעירים</h1>
+  <p>תוכניות חינוך פיננסי ויזמות לבתי ספר – מותאמות לכיתות, שכבות ומספר שכבות.</p>
+  <a href="products.html" class="btn">צפו בתוכניות</a>
+</section>
+
+<!-- ========================== -->
+<!--       PRODUCT CARDS        -->
+<!-- ========================== -->
+
+<section class="products-grid">
+  <article class="product-card">
+    <h3>סדנת יזמות לבתי ספר</h3>
+    <p>תהליך מלא מרעיון למיזם – עבודה בצוותים, Pitch וסימולציית משקיעים.</p>
+  </article>
+
+  <article class="product-card">
+    <h3>חינוך פיננסי לדור הצעיר</h3>
+    <p>ניהול תקציב, חיסכון, צרכנות נבונה והיכרות עם העולם הכלכלי.</p>
+  </article>
+
+  <article class="product-card">
+    <h3>האקתונים ותחרויות חדשנות</h3>
+    <p>יום שיא חווייתי בבית הספר שמחבר בין יצירתיות, טכנולוגיה וקהילה.</p>
+  </article>
+</section>
+
+<!-- ========================== -->
+<!--     TESTIMONIALS (3)       -->
+<!-- ========================== -->
+
+<section class="testimonials">
+  <h2>מה אומרים עלינו</h2>
+
+  <div class="testimonial-box">
+    <button id="prevBtn">❮</button>
+
+    <div class="testimonials-grid" id="testimonialsGrid">
+      <!-- נטען ע״י JS -->
     </div>
 
-    <div class="nav-left">
-      <a href="login.html" class="nav-btn login-btn">התחברות</a>
-      <a href="register.html" class="nav-btn register-btn">הרשמה</a>
-    </div>
-  </header>
+    <button id="nextBtn">❯</button>
+  </div>
+</section>
 
-  <!-- אזור Hero -->
-  <section class="hero">
-    <h1>יוצרים דור חדש של יזמים צעירים</h1>
-    <p>תוכניות חינוך פיננסי ויזמות לבתי ספר – מותאמות לכיתות, שכבות ומספר שכבות.</p>
-    <a href="products.html" class="btn">צפו בתוכניות</a>
-  </section>
+<!-- ========================== -->
+<!--           FOOTER           -->
+<!-- ========================== -->
 
-  <!-- מקטע קצר על מה אנחנו מציעים -->
-  <section class="products-grid">
-    <article class="product-card">
-      <h3>סדנת יזמות לבתי ספר</h3>
-      <p>תהליך מלא מרעיון למיזם – עבודה בצוותים, Pitch וסימולציית משקיעים.</p>
-    </article>
+<footer class="footer">
+  <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
+</footer>
 
-    <article class="product-card">
-      <h3>חינוך פיננסי לדור הצעיר</h3>
-      <p>ניהול תקציב, חיסכון, צרכנות נבונה והיכרות עם העולם הכלכלי.</p>
-    </article>
+<!-- ========================== -->
+<!--        SCRIPTS             -->
+<!-- ========================== -->
 
-    <article class="product-card">
-      <h3>האקתונים ותחרויות חדשנות</h3>
-      <p>יום שיא חווייתי בבית הספר שמחבר בין יצירתיות, טכנולוגיה וקהילה.</p>
-    </article>
-  </section>
+<script src="auth.js"></script>
 
-  <!-- אזור מוכן לדינמיקה בעתיד (JS) -->
-  <section id="dynamic-area" data-js="future-feature">
-    <!-- בעתיד תוכלו להוסיף כאן אלמנטים דינמיים עם JavaScript -->
-  </section>
+<script>
+  const testimonials = [
+    {
+      text: "התלמידים חזרו מהסדנה עם מוטיבציה גבוהה, ביטחון עצמי וחשיבה יזמית מפותחת.",
+      rating: 5
+    },
+    {
+      text: "תוכנית חינוכית מעשירה שמשלבת חינוך פיננסי עם כלים מעשיים מעולם היזמות.",
+      rating: 4
+    },
+    {
+      text: "ראינו שינוי אמיתי בגישה של התלמידים לאחריות אישית וניהול כסף.",
+      rating: 5
+    },
+    {
+      text: "יום ההאקתון היה חוויה לימודית יוצאת דופן ששילבה יצירתיות ועבודת צוות.",
+      rating: 4
+    },
+    {
+      text: "FutureWize מחברת בין עולם הסטארטאפים לבין הכיתה בצורה נגישה ומעוררת השראה.",
+      rating: 5
+    },
+    {
+      text: "הצוות מקצועי, נעים ומעורר השראה – התלמידים היו מעורבים לאורך כל הדרך.",
+      rating: 5
+    }
+  ];
 
-  <!-- פוטר -->
-  <footer class="footer">
-    <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
-  </footer>
+  let startIndex = 0;
+  const grid = document.getElementById("testimonialsGrid");
+
+  function renderTestimonials() {
+    grid.innerHTML = "";
+
+    for (let i = 0; i < 3; i++) {
+      const index = (startIndex + i) % testimonials.length;
+      const t = testimonials[index];
+
+      const card = document.createElement("div");
+      card.className = "testimonial-card";
+
+      card.innerHTML = `
+        <p>"${t.text}"</p>
+        <div class="stars">
+          ${"⭐".repeat(t.rating)}${"☆".repeat(5 - t.rating)}
+        </div>
+      `;
+
+      grid.appendChild(card);
+    }
+  }
+
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    startIndex = (startIndex + 1) % testimonials.length;
+    renderTestimonials();
+  });
+
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    startIndex = (startIndex - 1 + testimonials.length) % testimonials.length;
+    renderTestimonials();
+  });
+
+  renderTestimonials();
+</script>
 
 </body>
 </html>
