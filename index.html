@@ -105,6 +105,7 @@
 <script src="auth.js"></script>
 
 <script>
+  // An array of objects – each object represents one testimonial
   const testimonials = [
     {
       text: "התלמידים חזרו מהסדנה עם מוטיבציה גבוהה, ביטחון עצמי וחשיבה יזמית מפותחת.",
@@ -132,19 +133,34 @@
     }
   ];
 
+  // Keeps track of the starting index for the displayed testimonials
   let startIndex = 0;
+
+  // Gets the HTML element where the testimonials will be displayed
   const grid = document.getElementById("testimonialsGrid");
 
+  // Function that renders three testimonials on the screen
   function renderTestimonials() {
+
+    // Clears the previous testimonials from the grid
     grid.innerHTML = "";
 
+    // Loop that runs three times to display three testimonials
     for (let i = 0; i < 3; i++) {
+
+      // Calculates the correct index using modulo to avoid going out of bounds
       const index = (startIndex + i) % testimonials.length;
+
+      // Gets the testimonial object from the array
       const t = testimonials[index];
 
+      // Creates a new div element for a testimonial card
       const card = document.createElement("div");
+
+      // Assigns a CSS class to the testimonial card
       card.className = "testimonial-card";
 
+      // Inserts the testimonial text and star rating into the card
       card.innerHTML = `
         <p>"${t.text}"</p>
         <div class="stars">
@@ -152,21 +168,35 @@
         </div>
       `;
 
+      // Appends the testimonial card to the grid
       grid.appendChild(card);
     }
   }
 
+  // Adds a click event listener to the "next" button
   document.getElementById("nextBtn").addEventListener("click", () => {
+
+    // Moves the start index forward
     startIndex = (startIndex + 1) % testimonials.length;
+
+    // Re-renders the testimonials
     renderTestimonials();
   });
 
+  // Adds a click event listener to the "previous" button
   document.getElementById("prevBtn").addEventListener("click", () => {
+
+    // Moves the start index backward and prevents negative index
     startIndex = (startIndex - 1 + testimonials.length) % testimonials.length;
+
+    // Re-renders the testimonials
     renderTestimonials();
   });
 
+  // Displays the initial testimonials when the page loads
   renderTestimonials();
+</script>
+
 </script>
 
 </body>

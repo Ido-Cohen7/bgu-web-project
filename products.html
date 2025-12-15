@@ -163,21 +163,34 @@
 <script src="auth.js"></script>
 
 <script>
-    const cards = document.querySelectorAll(".card-content");
+    // Selects all elements on the page with the class "card-content"
+    const cards = document.querySelectorAll(".card-content"); 
 
+    // Loops through each program card
     cards.forEach(card => {
+
+        // Saves the original HTML content of the card 
         const originalHTML = card.innerHTML;
+
+        // Gets the detailed info from the data-info attribute and replaces line breaks with <br>
         const infoHTML = card.dataset.info.replaceAll("\n", "<br>");
 
+        // Adds an event listener for when the mouse enters the card
         card.addEventListener("mouseenter", () => {
-            card.innerHTML = `<p style="font-size:14px; line-height:1.6;">${infoHTML}</p>`;
+
+            // Replaces the card content with the detailed program information
+            card.innerHTML = `<p style="font-size:16px; line-height:1.6;">${infoHTML}</p>`;
         });
 
+        // Adds an event listener for when the mouse leaves the card
         card.addEventListener("mouseleave", () => {
+
+            // Restores the original card content
             card.innerHTML = originalHTML;
         });
     });
 </script>
+
 
 </body>
 </html>
