@@ -59,7 +59,6 @@
     <!-- 1. יזמות כיתתית -->
     <div class="product-card program-card-link">
         <img src="./images/IMG-4.jpg" alt="סדנת יזמות כיתתית" class="program-img">
-
         <div class="card-content"
              data-info="משך הסדנה: 3 שעות
 מספר משתתפים מקסימלי: עד 30
@@ -68,16 +67,15 @@
 
 סדנה חווייתית בה התלמידים נחשפים לעולם היזמות דרך עבודה קבוצתית וחשיבה יצירתית.
 התלמידים לומדים לזהות בעיות מהעולם האמיתי ולהציע להן פתרונות חדשניים.">
-
             <h3>סדנת יזמות – כיתתית</h3>
             <p>סדנה חווייתית בה התלמידים עוברים תהליך מלא מרעיון למיזם.</p>
+            <button class="more-info-btn">למידע נוסף</button>
         </div>
     </div>
 
     <!-- 2. פיננסי כיתתי -->
     <div class="product-card program-card-link">
         <img src="./images/IMG-2.jpg" alt="סדנת חינוך פיננסי כיתתית" class="program-img">
-
         <div class="card-content"
              data-info="משך הסדנה: 3 שעות
 מספר משתתפים מקסימלי: עד 30
@@ -86,16 +84,15 @@
 
 סדנה מעשית המעניקה לתלמידים כלים בסיסיים לניהול כסף וקבלת החלטות כלכליות.
 הלמידה מתבצעת באמצעות סימולציות ודוגמאות מחיי היום־יום.">
-
             <h3>סדנת חינוך פיננסי – כיתתית</h3>
             <p>למידה חווייתית בנושאי תקציב, צרכנות נבונה וחיי כלכלה אמיתית.</p>
+            <button class="more-info-btn">למידע נוסף</button>
         </div>
     </div>
 
     <!-- 3. יזמות שכבתית -->
     <div class="product-card program-card-link">
         <img src="./images/IMG-3.jpg" alt="סדנת יזמות שכבתית" class="program-img">
-
         <div class="card-content"
              data-info="משך הסדנה: כ־4 שעות
 מספר משתתפים מקסימלי: עד 120
@@ -104,16 +101,15 @@
 
 פעילות יזמות רחבה לשכבה שלמה הכוללת עבודה בצוותים, פיתוח רעיונות ותרגול הצגה.
 הסדנה מעודדת עבודת צוות, מנהיגות וחשיבה מחוץ לקופסה.">
-
             <h3>סדנת יזמות – שכבתית</h3>
             <p>עבודה בקבוצות גדולות, Pitch מול שופטים וחוויית חדשנות רחבה.</p>
+            <button class="more-info-btn">למידע נוסף</button>
         </div>
     </div>
 
     <!-- 4. פיננסי שכבתית -->
     <div class="product-card program-card-link">
         <img src="./images/תמונת ילד מחשבון.jpeg" alt="סדנת חינוך פיננסי שכבתית" class="program-img">
-
         <div class="card-content"
              data-info="משך הסדנה: כ־4 שעות
 מספר משתתפים מקסימלי: עד 120
@@ -122,16 +118,15 @@
 
 סדנה אינטראקטיבית המשלבת משחקים ותחרויות בין כיתות בנושאי כלכלה וכסף.
 התלמידים לומדים על אחריות כלכלית, תכנון לטווח ארוך ועבודת צוות.">
-
             <h3>סדנת חינוך פיננסי – שכבתית</h3>
             <p>תחרות פיננסית בין כיתות והבנה מעשית של כסף.</p>
+            <button class="more-info-btn">למידע נוסף</button>
         </div>
     </div>
 
     <!-- 5. האקתון -->
     <div class="product-card program-card-link">
         <img src="./images/IMG - 8.jpg" alt="האקתון חדשנות" class="program-img">
-
         <div class="card-content"
              data-info="משך הסדנה: יום מלא
 מספר משתתפים מקסימלי: עד 150
@@ -140,9 +135,9 @@
 
 אירוע שיא חווייתי בו תלמידים עובדים בצוותים על פיתוח רעיונות חדשניים בזמן מוגבל.
 הפעילות כוללת ליווי מקצועי והצגת פתרונות בפני צוות שופטים.">
-
             <h3>תחרות חדשנות / האקתון</h3>
             <p>אירוע שיא לבתי ספר – יצירתיות, טכנולוגיה ושיתוף פעולה.</p>
+            <button class="more-info-btn">למידע נוסף</button>
         </div>
     </div>
 
@@ -157,40 +152,35 @@
 </footer>
 
 <!-- ========================== -->
-<!--        SCRIPTS             -->
+<!--           SCRIPTS          -->
 <!-- ========================== -->
 
 <script src="auth.js"></script>
 
 <script>
-    // Selects all elements on the page with the class "card-content"
-    const cards = document.querySelectorAll(".card-content"); 
+    const cards = document.querySelectorAll(".card-content");
 
-    // Loops through each program card
     cards.forEach(card => {
-
-        // Saves the original HTML content of the card 
         const originalHTML = card.innerHTML;
-
-        // Gets the detailed info from the data-info attribute and replaces line breaks with <br>
         const infoHTML = card.dataset.info.replaceAll("\n", "<br>");
+        let isExpanded = false;
 
-        // Adds an event listener for when the mouse enters the card
-        card.addEventListener("mouseenter", () => {
+        card.addEventListener("click", (e) => {
+            if (!e.target.classList.contains("more-info-btn")) return;
 
-            // Replaces the card content with the detailed program information
-            card.innerHTML = `<p style="font-size:16px; line-height:1.6;">${infoHTML}</p>`;
-        });
-
-        // Adds an event listener for when the mouse leaves the card
-        card.addEventListener("mouseleave", () => {
-
-            // Restores the original card content
-            card.innerHTML = originalHTML;
+            if (!isExpanded) {
+                card.innerHTML = `
+                    <p style="font-size:16px; line-height:1.6;">${infoHTML}</p>
+                    <button class="more-info-btn">חזרה</button>
+                `;
+                isExpanded = true;
+            } else {
+                card.innerHTML = originalHTML;
+                isExpanded = false;
+            }
         });
     });
 </script>
-
 
 </body>
 </html>
