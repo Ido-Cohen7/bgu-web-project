@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>FutureWize – My Cart</title>
+    <link rel="stylesheet" href="designcss.css">
+</head>
+
+<body>
+
+<!-- ========================== -->
+<!--           NAVBAR           -->
+<!-- ========================== -->
+
+<header class="navbar">
+    <div class="nav-right">
+        <a href="index.html">
+            <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html">בית</a>
+            <a href="products.html">תוכניות</a>
+            <a href="cart.html">העגלה שלי</a>
+            <a href="contact.html">צור קשר</a>
+        </nav>
+    </div>
+</header>
+
+  <div class="nav-left">
+    <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
+
+    <button id="logoutBtn"
+            onclick="logout()"
+            style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
+      התנתקות
+    </button>
+
+    <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
+    <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
+  </div>
+</header>
+
+<!-- ========================== -->
+<!--           CART PAGE        -->
+<!-- ========================== -->
+
+<section class="cart-page">
+
+    <h1 class="cart-title">MY SHOPPING BAG</h1>
+
+    <div class="cart-layout">
+
+        <!-- LEFT SIDE: Cart items list -->
+        <div class="cart-items" id="cartItems"></div>
+
+        <!-- RIGHT SIDE: Order summary -->
+        <div class="cart-summary">
+            <h3>SUMMARY</h3>
+
+            <p>Total selected</p>
+            <h2 id="totalPrice">₪0</h2>
+
+            <p style="font-size:14px; color:#666; margin-top:10px;">
+                Payment is completed by coordinating with a FutureWize representative
+            </p>
+
+            <!-- Main action button -->
+            <button class="checkout-btn" id="contactBtn">
+                Contact a representative
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ========================== -->
+<!--           FOOTER           -->
+<!-- ========================== -->
+
+<footer class="footer">
+    <p>© 2025 FutureWize — Financial Education & Entrepreneurship</p>
+</footer>
+
+<!-- ========================== -->
+<!--            SCRIPT          -->
+<!-- ========================== -->
+
+<script>
+/* =========================================================
+   AUTHENTICATION CHECK
+   The user must be logged in to contact a representative
+========================================================= */
+
+// Retrieve logged-in user from localStorage
+const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+const contactBtn = document.getElementById("contactBtn");
+
+// If the user is not logged in, block the action and redirect to login
+if (!loggedInUser) {
+    contactBtn.textContent = "Please login to continue";
+    contactBtn.onclick = () => {
+        // Save redirect path so user returns here after login
+        localStorage.setItem("redirectAfterLogin", "cart.html");
+        window.location.href = "login.html";
+    };
+}
+
+/* =========================================================
+   CART DATA
+========================================================= */
+
+// Fixed prices per program (business logic layer)
+const prices = {
+    "סדנת יזמות – כיתתית": 2000,
+    "סדנת חינוך פיננסי – כיתתית": 2000,
+    "סדנת יזמות – שכבתית": 6000,
+    "סדנת חינוך פיננסי – שכבתית": 6000,
+    "תחרות חדשנות / האקתון": 10000
+};
+
+// Load cart from localStorage
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Track only selected items (checkbox logic)
+let selectedItems = [...cart];
+
+// DOM references
+const cartItemsEl = document.getElementById("cartItems");
+const totalPriceEl = document.getElementById("totalPrice");
+
+/* =========================================================
+   RENDER CART
+========================================================= */
+
+function renderCart() {
+    cartItemsEl.innerHTML = "";
+    let total = 0;
+
+    // Empty cart state
+    if (cart.length === 0) {
+        cartItemsEl.innerHTML = "<p>The cart is empty</p>";
+        totalPriceEl.textContent = "₪0";
+        return;
+    }
+
+    // Render each cart item
+    cart.forEach((item, index) => {
+        const price = prices[item] || 0;
+        const isChecked = selectedItems.includes(item);
+
+        if (isChecked) total += price;
+
+        cartItemsEl.innerHTML += `
+            <div class="cart-row">
+                <input type="checkbox"
+                       ${isChecked ? "checked" : ""}
+                       onchange="toggleItem('${item}')">
+
+                <div class="cart-info">
+                    <strong>${item}</strong>
+                </div>
+
+                <div class="cart-price">
+                    ₪${price.toLocaleString()}
+                </div>
+
+                <button class="remove-btn" onclick="removeItem(${index})">
+                    ✕
+                </button>
+            </div>
+        `;
+    });
+
+    totalPriceEl.textContent = `₪${total.toLocaleString()}`;
+}
+
+/* =========================================================
+   TOGGLE ITEM SELECTION
+========================================================= */
+
+function toggleItem(item) {
+    if (selectedItems.includes(item)) {
+        selectedItems = selectedItems.filter(i => i !== item);
+    } else {
+        selectedItems.push(item);
+    }
+    renderCart();
+}
+
+/* =========================================================
+   REMOVE ITEM FROM CART
+========================================================= */
+
+function removeItem(index) {
+    const removedItem = cart[index];
+    cart.splice(index, 1);
+    selectedItems = selectedItems.filter(i => i !== removedItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
+
+/* =========================================================
+   CONTACT REPRESENTATIVE (PAYMENT FLOW)
+========================================================= */
+
+contactBtn.addEventListener("click", contactRepresentative);
+
+function contactRepresentative() {
+    // Safety check (should not happen due to auth guard)
+    if (!loggedInUser) return;
+
+    if (selectedItems.length === 0) {
+        alert("Please select at least one program");
+        return;
+    }
+
+    // Build email body
+    let message =
+`Hello,
+
+Customer details:
+Name: ${loggedInUser.name}
+Email: ${loggedInUser.email}
+
+The customer is interested in coordinating payment for the following programs:
+
+`;
+
+    let total = 0;
+
+    selectedItems.forEach(item => {
+        const price = prices[item] || 0;
+        total += price;
+        message += `- ${item} (₪${price.toLocaleString()})\n`;
+    });
+
+    message += `\nEstimated total: ₪${total.toLocaleString()}\n\nThank you.`;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    // Open user's email client with pre-filled content
+    window.location.href =
+        `mailto:Futurewize2025@gmail.com?subject=New Program Order Request&body=${encodedMessage}`;
+}
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
+
+renderCart();
+</script>
+
+</body>
+</html>
