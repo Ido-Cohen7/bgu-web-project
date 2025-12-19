@@ -2,70 +2,144 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>הרשמה – FutureWize</title>
-
   <link rel="stylesheet" href="designcss.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ========================== -->
+<!--           NAVBAR           -->
+<!-- ========================== -->
+
 <header class="navbar">
-    <div class="nav-right">
-        <a href="index.html">
-            <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
-        </a>
+  <div class="nav-right">
+    <a href="index.html">
+      <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+    </a>
 
-        <nav class="nav-links">
-            <a href="index.html">בית</a>
-            <a href="about.html">אודות</a>
-            <a href="products.html">תוכניות</a>
-            <a href="cart.html">העגלה שלי</a>
-            <a href="contact.html">צור קשר</a>
-        </nav>
-    </div>
+    <nav class="nav-links">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="products.html">תוכניות</a>
+      <a href="cart.html">העגלה שלי</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+  </div>
 
-    <div class="nav-left">
-        <a href="login.html" class="nav-btn login-btn">התחברות</a>
-        <a href="register.html" class="nav-btn register-btn">הרשמה</a>
-    </div>
+  <div class="nav-left">
+    <a href="login.html" class="nav-btn login-btn">התחברות</a>
+    <a href="register.html" class="nav-btn register-btn">הרשמה</a>
+  </div>
 </header>
 
-<!-- REGISTER SECTION -->
+<!-- ========================== -->
+<!--        REGISTER FORM       -->
+<!-- ========================== -->
+
 <section class="form-container">
 
-    <h1>הרשמה למערכת</h1>
-    <p>הצטרפו אלינו וקבלו גישה להזמנות, סדנאות ואזור אישי</p>
+  <h1>הרשמה למערכת</h1>
+  <p>הצטרפו אלינו וקבלו גישה להזמנות, סדנאות ואזור אישי</p>
 
-    <form class="register-form" data-js="register-form">
+  <!-- חשוב: novalidate -->
+  <form class="register-form" id="registerForm" novalidate>
 
-        <label>שם מלא:</label>
-        <input type="text" name="fullname" placeholder="הכנס שם מלא" required>
+    <label for="fullname">שם מלא:</label>
+    <input type="text" id="fullname" required>
 
-        <label>אימייל:</label>
-        <input type="email" name="email" placeholder="name@gmail.com" required>
+    <label for="email">אימייל:</label>
+    <input type="text" id="email" placeholder="name@gmail.com" required>
 
-        <label>סיסמה:</label>
-        <input type="password" name="password" placeholder="••••••••" required>
+    <label for="phone">מספר טלפון:</label>
+    <input type="text" id="phone" placeholder="05XXXXXXXX" required>
 
-        <label>אישור סיסמה:</label>
-        <input type="password" name="password2" placeholder="חזור על הסיסמה" required>
+    <label for="password">סיסמה:</label>
+    <input type="password" id="password" required>
 
-        <button type="submit" class="btn">צור חשבון</button>
+    <label for="password2">אישור סיסמה:</label>
+    <input type="password" id="password2" required>
 
-        <p class="form-switch">
-            כבר יש לכם חשבון?
-            <a href="login.html">התחברו כאן</a>
-        </p>
+    <button type="submit" class="btn">צור חשבון</button>
 
-    </form>
+  </form>
 
 </section>
 
-<!-- FOOTER -->
+<!-- ========================== -->
+<!--           FOOTER           -->
+<!-- ========================== -->
+
 <footer class="footer">
-    © 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר
+  © 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר
 </footer>
+
+<!-- ========================== -->
+<!--           SCRIPT           -->
+<!-- ========================== -->
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const fullname = document.getElementById("fullname");
+  const email = document.getElementById("email");
+  const phone = document.getElementById("phone");
+  const password = document.getElementById("password");
+  const password2 = document.getElementById("password2");
+
+  // Reset errors
+  [fullname, email, phone, password, password2].forEach(input => {
+    input.setCustomValidity("");
+  });
+
+  /* ========================= */
+  /* EMAIL VALIDATION */
+  /* ========================= */
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email.value)) {
+    email.setCustomValidity("אנא הזן כתובת אימייל תקינה (לדוגמה: name@gmail.com)");
+    email.reportValidity();
+    return;
+  }
+
+  /* ========================= */
+  /* PHONE VALIDATION */
+  /* ========================= */
+
+  const phoneRegex = /^0\d{9}$/;
+
+  if (!phoneRegex.test(phone.value)) {
+    phone.setCustomValidity(
+      "מספר טלפון חייב להתחיל ב-0 ולהכיל 10 ספרות בלבד"
+    );
+    phone.reportValidity();
+    return;
+  }
+
+  /* ========================= */
+  /* PASSWORD MATCH */
+  /* ========================= */
+
+  if (password.value !== password2.value) {
+    password2.setCustomValidity("הסיסמאות אינן תואמות");
+    password2.reportValidity();
+    return;
+  }
+
+  /* ========================= */
+  /* SUCCESS */
+  /* ========================= */
+
+  alert("ההרשמה בוצעה בהצלחה!");
+  localStorage.setItem("username", fullname.value);
+  window.location.href = "index.html";
+});
+</script>
+
 <script src="auth.js"></script>
 
 </body>
