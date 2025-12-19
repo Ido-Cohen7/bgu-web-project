@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>FutureWize - התחברות</title>
+
+  <!-- קובץ העיצוב הכללי -->
+  <link rel="stylesheet" href="designcss.css">
+</head>
+<body>
+
+  <!-- סרגל ניווט -->
+  <header class="navbar">
+    <div class="nav-right">
+
+      <a href="index.html">
+        <img src="images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">בית</a>
+        <a href="about.html">אודות</a>
+        <a href="products.html">תוכניות</a>
+        <a href="cart.html">העגלה שלי</a>
+        <a href="contact.html">צור קשר</a>
+      </nav>
+    </div>
+
+    <div class="nav-left">
+      <a href="login.html" class="nav-btn login-btn">התחברות</a>
+      <a href="register.html" class="nav-btn register-btn">הרשמה</a>
+    </div>
+  </header>
+
+
+  <!-- טופס התחברות -->
+  <div class="form-container">
+
+    <h1>התחברות</h1>
+    <p>הזן את כתובת המייל והסיסמה שבחרת בעת ההרשמה.</p>
+
+    <form onsubmit="login(event)" class="register-form">
+
+      <label for="email">דוא״ל</label>
+      <input type="email" id="email" required placeholder="yourmail@example.com">
+
+      <label for="password">סיסמה</label>
+      <input type="password" id="password" required placeholder="הקלד סיסמה">
+
+      <button type="submit" class="btn">התחבר</button>
+
+      <p id="errorMsg" style="color:red; display:none; margin-top:10px;">
+        המייל או הסיסמה אינם נכונים
+      </p>
+
+    </form>
+
+    <div class="form-switch">
+      אין לך חשבון?
+      <a href="register.html">להרשמה לחץ כאן</a>
+    </div>
+
+  </div>
+
+
+  <!-- JavaScript -->
+  <script>
+    function login(event) {
+      event.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // נתונים לדוגמה — תחליף בעתיד לרישום אמיתי
+      const validEmail = "ido@gmail.com";
+      const validPass = "1234";
+
+      if (email === validEmail && password === validPass) {
+        localStorage.setItem("username", "עידו");
+        window.location.href = "index.html";
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+  </script>
+<script src="auth.js"></script>
+
+</body>
+</html>

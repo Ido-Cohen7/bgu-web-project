@@ -22,7 +22,7 @@
             <a href="index.html">בית</a>
             <a href="about.html">אודות</a>
             <a href="products.html">תוכניות</a>
-            <a href="gallery.html">גלריית תמונות</a>
+            <a href="cart.html">העגלה שלי</a>
             <a href="contact.html">צור קשר</a>
         </nav>
     </div>
@@ -60,6 +60,7 @@
     <div class="product-card program-card-link">
         <img src="./images/IMG-4.jpg" alt="סדנת יזמות כיתתית" class="program-img">
         <div class="card-content"
+             data-name="סדנת יזמות – כיתתית"
              data-info="משך הסדנה: 3 שעות
 מספר משתתפים מקסימלי: עד 30
 מתאים לכיתות: ז׳–ט׳
@@ -69,7 +70,7 @@
 התלמידים לומדים לזהות בעיות מהעולם האמיתי ולהציע להן פתרונות חדשניים.">
             <h3>סדנת יזמות – כיתתית</h3>
             <p>סדנה חווייתית בה התלמידים עוברים תהליך מלא מרעיון למיזם.</p>
-            <button class="more-info-btn">למידע נוסף</button>
+            <button class="more-info-btn" type="button">למידע נוסף</button>
         </div>
     </div>
 
@@ -77,6 +78,7 @@
     <div class="product-card program-card-link">
         <img src="./images/IMG-2.jpg" alt="סדנת חינוך פיננסי כיתתית" class="program-img">
         <div class="card-content"
+             data-name="סדנת חינוך פיננסי – כיתתית"
              data-info="משך הסדנה: 3 שעות
 מספר משתתפים מקסימלי: עד 30
 מתאים לכיתות: ז׳–ט׳
@@ -86,7 +88,7 @@
 הלמידה מתבצעת באמצעות סימולציות ודוגמאות מחיי היום־יום.">
             <h3>סדנת חינוך פיננסי – כיתתית</h3>
             <p>למידה חווייתית בנושאי תקציב, צרכנות נבונה וחיי כלכלה אמיתית.</p>
-            <button class="more-info-btn">למידע נוסף</button>
+            <button class="more-info-btn" type="button">למידע נוסף</button>
         </div>
     </div>
 
@@ -94,6 +96,7 @@
     <div class="product-card program-card-link">
         <img src="./images/IMG-3.jpg" alt="סדנת יזמות שכבתית" class="program-img">
         <div class="card-content"
+             data-name="סדנת יזמות – שכבתית"
              data-info="משך הסדנה: כ־4 שעות
 מספר משתתפים מקסימלי: עד 120
 מתאים לכיתות: ח׳–י׳
@@ -103,7 +106,7 @@
 הסדנה מעודדת עבודת צוות, מנהיגות וחשיבה מחוץ לקופסה.">
             <h3>סדנת יזמות – שכבתית</h3>
             <p>עבודה בקבוצות גדולות, Pitch מול שופטים וחוויית חדשנות רחבה.</p>
-            <button class="more-info-btn">למידע נוסף</button>
+            <button class="more-info-btn" type="button">למידע נוסף</button>
         </div>
     </div>
 
@@ -111,6 +114,7 @@
     <div class="product-card program-card-link">
         <img src="./images/תמונת ילד מחשבון.jpeg" alt="סדנת חינוך פיננסי שכבתית" class="program-img">
         <div class="card-content"
+             data-name="סדנת חינוך פיננסי – שכבתית"
              data-info="משך הסדנה: כ־4 שעות
 מספר משתתפים מקסימלי: עד 120
 מתאים לכיתות: ח׳–י׳
@@ -120,7 +124,7 @@
 התלמידים לומדים על אחריות כלכלית, תכנון לטווח ארוך ועבודת צוות.">
             <h3>סדנת חינוך פיננסי – שכבתית</h3>
             <p>תחרות פיננסית בין כיתות והבנה מעשית של כסף.</p>
-            <button class="more-info-btn">למידע נוסף</button>
+            <button class="more-info-btn" type="button">למידע נוסף</button>
         </div>
     </div>
 
@@ -128,6 +132,7 @@
     <div class="product-card program-card-link">
         <img src="./images/IMG - 8.jpg" alt="האקתון חדשנות" class="program-img">
         <div class="card-content"
+             data-name="תחרות חדשנות / האקתון"
              data-info="משך הסדנה: יום מלא
 מספר משתתפים מקסימלי: עד 150
 מתאים לכיתות: ט׳–י״ב
@@ -137,7 +142,7 @@
 הפעילות כוללת ליווי מקצועי והצגת פתרונות בפני צוות שופטים.">
             <h3>תחרות חדשנות / האקתון</h3>
             <p>אירוע שיא לבתי ספר – יצירתיות, טכנולוגיה ושיתוף פעולה.</p>
-            <button class="more-info-btn">למידע נוסף</button>
+            <button class="more-info-btn" type="button">למידע נוסף</button>
         </div>
     </div>
 
@@ -158,29 +163,49 @@
 <script src="auth.js"></script>
 
 <script>
-    const cards = document.querySelectorAll(".card-content");
+  const cards = document.querySelectorAll(".products-grid .card-content");
 
-    cards.forEach(card => {
-        const originalHTML = card.innerHTML;
-        const infoHTML = card.dataset.info.replaceAll("\n", "<br>");
-        let isExpanded = false;
+  cards.forEach(card => {
+    const originalHTML = card.innerHTML;
+    const infoHTML = (card.dataset.info || "").replaceAll("\n", "<br>");
+    const programName = card.dataset.name || "תוכנית";
 
-        card.addEventListener("click", (e) => {
-            if (!e.target.classList.contains("more-info-btn")) return;
+    let isExpanded = false;
 
-            if (!isExpanded) {
-                card.innerHTML = `
-                    <p style="font-size:16px; line-height:1.6;">${infoHTML}</p>
-                    <button class="more-info-btn">חזרה</button>
-                `;
-                isExpanded = true;
-            } else {
-                card.innerHTML = originalHTML;
-                isExpanded = false;
-            }
+    card.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("more-info-btn")) return;
+      e.preventDefault();
+
+      if (!isExpanded) {
+        card.innerHTML = `
+          <p style="font-size:16px; line-height:1.6;">${infoHTML}</p>
+          <div class="card-actions">
+            <button class="more-info-btn" type="button">חזרה</button>
+            <button class="add-to-cart-btn" type="button">הוסף לעגלה</button>
+          </div>
+        `;
+
+        card.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+          addToCart(programName);
         });
+
+        isExpanded = true;
+      } else {
+        card.innerHTML = originalHTML;
+        isExpanded = false;
+      }
     });
+  });
+
+  function addToCart(name) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(name);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("התוכנית נוספה לעגלה");
+  }
 </script>
+
+
 
 </body>
 </html>

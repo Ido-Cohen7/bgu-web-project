@@ -2,8 +2,12 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>FutureWize – My Cart</title>
+    <title>FutureWize – העגלה שלי</title>
     <link rel="stylesheet" href="designcss.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -13,19 +17,19 @@
 <!-- ========================== -->
 
 <header class="navbar">
-    <div class="nav-right">
-        <a href="index.html">
-            <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
-        </a>
+  <div class="nav-right">
+    <a href="index.html">
+      <img src="images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+    </a>
 
-        <nav class="nav-links">
-            <a href="index.html">בית</a>
-            <a href="products.html">תוכניות</a>
-            <a href="cart.html">העגלה שלי</a>
-            <a href="contact.html">צור קשר</a>
-        </nav>
-    </div>
-</header>
+    <nav class="nav-links">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="products.html">תוכניות</a>
+      <a href="cart.html">העגלה שלי</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
+  </div>
 
   <div class="nav-left">
     <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
@@ -45,73 +49,57 @@
 <!--           CART PAGE        -->
 <!-- ========================== -->
 
-<section class="cart-page">
+<main class="cart-page">
 
-    <h1 class="cart-title">MY SHOPPING BAG</h1>
+    <h1 class="cart-title">
+        <i class="bi bi-cart4 cart-icon"></i>
+        העגלה שלי
+    </h1>
 
-    <div class="cart-layout">
+    <section class="cart-layout">
 
-        <!-- LEFT SIDE: Cart items list -->
-        <div class="cart-items" id="cartItems"></div>
+        <!-- LEFT: CART ITEMS -->
+        <section class="cart-items" id="cartItems"></section>
 
-        <!-- RIGHT SIDE: Order summary -->
-        <div class="cart-summary">
-            <h3>SUMMARY</h3>
+        <!-- RIGHT: SUMMARY -->
+        <aside class="cart-summary">
+            <h2 class="summary-title">סיכום ההזמנה</h2>
 
-            <p>Total selected</p>
-            <h2 id="totalPrice">₪0</h2>
+            <p class="summary-label">סה״כ נבחר</p>
+            <p class="summary-total" id="totalPrice">₪0</p>
 
-            <p style="font-size:14px; color:#666; margin-top:10px;">
-                Payment is completed by coordinating with a FutureWize representative
+            <p class="summary-note">
+                התשלום מתבצע באמצעות תיאום מול נציג FutureWize
             </p>
 
-            <!-- Main action button -->
-            <button class="checkout-btn" id="contactBtn">
-                Contact a representative
+            <button class="checkout-btn" onclick="contactRepresentative()">
+                העברת פנייה לנציג
             </button>
-        </div>
+        </aside>
 
-    </div>
+    </section>
 
-</section>
+</main>
 
 <!-- ========================== -->
 <!--           FOOTER           -->
 <!-- ========================== -->
 
 <footer class="footer">
-    <p>© 2025 FutureWize — Financial Education & Entrepreneurship</p>
+    <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
 </footer>
 
 <!-- ========================== -->
 <!--            SCRIPT          -->
 <!-- ========================== -->
 
+<script src="auth.js"></script>
+
 <script>
-/* =========================================================
-   AUTHENTICATION CHECK
-   The user must be logged in to contact a representative
-========================================================= */
+/* ============================= */
+/*            DATA               */
+/* ============================= */
 
-// Retrieve logged-in user from localStorage
-const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-const contactBtn = document.getElementById("contactBtn");
-
-// If the user is not logged in, block the action and redirect to login
-if (!loggedInUser) {
-    contactBtn.textContent = "Please login to continue";
-    contactBtn.onclick = () => {
-        // Save redirect path so user returns here after login
-        localStorage.setItem("redirectAfterLogin", "cart.html");
-        window.location.href = "login.html";
-    };
-}
-
-/* =========================================================
-   CART DATA
-========================================================= */
-
-// Fixed prices per program (business logic layer)
 const prices = {
     "סדנת יזמות – כיתתית": 2000,
     "סדנת חינוך פיננסי – כיתתית": 2000,
@@ -120,32 +108,26 @@ const prices = {
     "תחרות חדשנות / האקתון": 10000
 };
 
-// Load cart from localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-// Track only selected items (checkbox logic)
 let selectedItems = [...cart];
 
-// DOM references
 const cartItemsEl = document.getElementById("cartItems");
 const totalPriceEl = document.getElementById("totalPrice");
 
-/* =========================================================
-   RENDER CART
-========================================================= */
+/* ============================= */
+/*         RENDER CART           */
+/* ============================= */
 
 function renderCart() {
     cartItemsEl.innerHTML = "";
     let total = 0;
 
-    // Empty cart state
     if (cart.length === 0) {
-        cartItemsEl.innerHTML = "<p>The cart is empty</p>";
+        cartItemsEl.innerHTML = "<p class='empty-cart'>העגלה ריקה</p>";
         totalPriceEl.textContent = "₪0";
         return;
     }
 
-    // Render each cart item
     cart.forEach((item, index) => {
         const price = prices[item] || 0;
         const isChecked = selectedItems.includes(item);
@@ -158,17 +140,13 @@ function renderCart() {
                        ${isChecked ? "checked" : ""}
                        onchange="toggleItem('${item}')">
 
-                <div class="cart-info">
-                    <strong>${item}</strong>
-                </div>
+                <span class="cart-item-name">${item}</span>
 
-                <div class="cart-price">
+                <span class="cart-price">
                     ₪${price.toLocaleString()}
-                </div>
+                </span>
 
-                <button class="remove-btn" onclick="removeItem(${index})">
-                    ✕
-                </button>
+                <button class="remove-btn" onclick="removeItem(${index})">✕</button>
             </div>
         `;
     });
@@ -176,9 +154,9 @@ function renderCart() {
     totalPriceEl.textContent = `₪${total.toLocaleString()}`;
 }
 
-/* =========================================================
-   TOGGLE ITEM SELECTION
-========================================================= */
+/* ============================= */
+/*      CART INTERACTIONS        */
+/* ============================= */
 
 function toggleItem(item) {
     if (selectedItems.includes(item)) {
@@ -189,10 +167,6 @@ function toggleItem(item) {
     renderCart();
 }
 
-/* =========================================================
-   REMOVE ITEM FROM CART
-========================================================= */
-
 function removeItem(index) {
     const removedItem = cart[index];
     cart.splice(index, 1);
@@ -201,30 +175,16 @@ function removeItem(index) {
     renderCart();
 }
 
-/* =========================================================
-   CONTACT REPRESENTATIVE (PAYMENT FLOW)
-========================================================= */
-
-contactBtn.addEventListener("click", contactRepresentative);
-
 function contactRepresentative() {
-    // Safety check (should not happen due to auth guard)
-    if (!loggedInUser) return;
-
     if (selectedItems.length === 0) {
-        alert("Please select at least one program");
+        alert("לא נבחרו תכניות לפנייה");
         return;
     }
 
-    // Build email body
     let message =
-`Hello,
+`שלום,
 
-Customer details:
-Name: ${loggedInUser.name}
-Email: ${loggedInUser.email}
-
-The customer is interested in coordinating payment for the following programs:
+אני מעוניין/ת לקבל פרטים ולתאם תשלום עבור התכניות הבאות:
 
 `;
 
@@ -236,18 +196,11 @@ The customer is interested in coordinating payment for the following programs:
         message += `- ${item} (₪${price.toLocaleString()})\n`;
     });
 
-    message += `\nEstimated total: ₪${total.toLocaleString()}\n\nThank you.`;
+    message += `\nסה״כ משוער: ₪${total.toLocaleString()}\n\nתודה!`;
 
-    const encodedMessage = encodeURIComponent(message);
-
-    // Open user's email client with pre-filled content
     window.location.href =
-        `mailto:Futurewize2025@gmail.com?subject=New Program Order Request&body=${encodedMessage}`;
+        `mailto:info@futurewize.co.il?subject=פנייה להזמנת סדנאות&body=${encodeURIComponent(message)}`;
 }
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
 
 renderCart();
 </script>
