@@ -2,23 +2,32 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enables responsive behavior on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>FutureWize - דף הבית</title>
-  <link rel="stylesheet" href="designcss.css">
+
+  <!-- Main global stylesheet -->
+  <link rel="stylesheet" href="design.css">
 </head>
 
 <body>
 
-<!-- ========================== -->
-<!--         NAVBAR             -->
-<!-- ========================== -->
 
+<!--NAVBAR-->
+<!-- Main navigation bar shared across all pages-->
 <header class="navbar">
+
+  <!-- Right side: logo and navigation links -->
   <div class="nav-right">
     <a href="index.html">
-      <img src="images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+      <img src="images/logo image.jpg"
+           alt="FutureWize Logo"
+           class="logo-img">
     </a>
 
+    <!-- Main site navigation -->
     <nav class="nav-links">
       <a href="index.html">בית</a>
       <a href="about.html">אודות</a>
@@ -28,85 +37,114 @@
     </nav>
   </div>
 
+  <!-- Left side: authentication area (login / register / welcome) -->
   <div class="nav-left">
-    <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
 
+    <!-- Welcome message shown only when the user is logged in -->
+    <span id="welcomeUser"
+          style="color:white; font-size:16px; display:none;">
+    </span>
+
+    <!-- Logout button shown only for logged-in users -->
     <button id="logoutBtn"
             onclick="logout()"
-            style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
+            style="display:none; background:none; border:none;
+                   color:var(--accent); cursor:pointer; font-weight:600;">
       התנתקות
     </button>
 
+    <!-- Login & Register buttons (hidden after login) -->
     <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
     <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
   </div>
+
 </header>
 
-<!-- ========================== -->
-<!--         HERO               -->
-<!-- ========================== -->
-
-<section class="hero">
+<!--HERO SECTION-->
+<!-- Main marketing section introducing the platform -->
+<section class="hero home-hero">
   <h1>יוצרים דור חדש של יזמים צעירים</h1>
-  <p>תוכניות חינוך פיננסי ויזמות לבתי ספר – מותאמות לכיתות, שכבות ומספר שכבות.</p>
+
+  <!-- Short value proposition -->
+  <p>
+    תוכניות חינוך פיננסי ויזמות לבתי ספר – מותאמות לכיתות,
+    שכבות ומספר שכבות.
+  </p>
+
+  <!-- Call to action button -->
   <a href="products.html" class="btn">צפו בתוכניות</a>
 </section>
 
-<!-- ========================== -->
-<!--       PRODUCT CARDS        -->
-<!-- ========================== -->
 
+<!-- Preview of the main services offered -->
 <section class="products-grid">
+
+  <!-- Product / service card -->
   <article class="product-card">
     <h3>סדנת יזמות לבתי ספר</h3>
-    <p>תהליך מלא מרעיון למיזם – עבודה בצוותים, Pitch וסימולציית משקיעים.</p>
+    <p>
+      תהליך מלא מרעיון למיזם – עבודה בצוותים,
+      Pitch וסימולציית משקיעים.
+    </p>
   </article>
 
   <article class="product-card">
     <h3>חינוך פיננסי לדור הצעיר</h3>
-    <p>ניהול תקציב, חיסכון, צרכנות נבונה והיכרות עם העולם הכלכלי.</p>
+    <p>
+      ניהול תקציב, חיסכון, צרכנות נבונה
+      והיכרות עם העולם הכלכלי.
+    </p>
   </article>
 
   <article class="product-card">
     <h3>האקתונים ותחרויות חדשנות</h3>
-    <p>יום שיא חווייתי בבית הספר שמחבר בין יצירתיות, טכנולוגיה וקהילה.</p>
+    <p>
+      יום שיא חווייתי בבית הספר שמחבר בין
+      יצירתיות, טכנולוגיה וקהילה.
+    </p>
   </article>
+
 </section>
 
-<!-- ========================== -->
-<!--     TESTIMONIALS (3)       -->
-<!-- ========================== -->
 
+<!--TESTIMONIALS-->
+<!-- Customer testimonials carousel -->
 <section class="testimonials">
+
   <h2>מה אומרים עלינו</h2>
 
   <div class="testimonial-box">
+
+    <!-- Previous testimonials button -->
     <button id="prevBtn">❮</button>
 
-    <div class="testimonials-grid" id="testimonialsGrid">
-      <!-- נטען ע״י JS -->
-    </div>
+    <!-- Testimonials will be injected here dynamically via JavaScript -->
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
 
+    <!-- Next testimonials button -->
     <button id="nextBtn">❯</button>
+
   </div>
 </section>
 
-<!-- ========================== -->
-<!--           FOOTER           -->
-<!-- ========================== -->
-
+<!--FOOTER-->
 <footer class="footer">
   <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
 </footer>
 
-<!-- ========================== -->
-<!--        SCRIPTS             -->
-<!-- ========================== -->
 
+<!--SCRIPTS-->
+
+<!-- Authentication logic (login/logout handling) -->
 <script src="auth.js"></script>
 
 <script>
-  // An array of objects – each object represents one testimonial
+
+
+
+  // An array that holds all testimonials.
+  // Each testimonial is represented as an object
+  // containing the review text and a numeric rating.
   const testimonials = [
     {
       text: "התלמידים חזרו מהסדנה עם מוטיבציה גבוהה, ביטחון עצמי וחשיבה יזמית מפותחת.",
@@ -134,34 +172,39 @@
     }
   ];
 
-  // Keeps track of the starting index for the displayed testimonials
+
+  // Keeps track of which testimonial index is currently the first one displayed.
   let startIndex = 0;
 
-  // Gets the HTML element where the testimonials will be displayed
+  // Gets the DOM element that will contain the testimonial cards.
   const grid = document.getElementById("testimonialsGrid");
 
-  // Function that renders three testimonials on the screen
+
+
+  // This function renders exactly three testimonials on the screen.
+  // It updates the DOM dynamically every time the user navigates.
   function renderTestimonials() {
 
-    // Clears the previous testimonials from the grid
+    // Clears any previously rendered testimonials
     grid.innerHTML = "";
 
-    // Loop that runs three times to display three testimonials
+    // Loop runs exactly 3 times to display 3 testimonials
     for (let i = 0; i < 3; i++) {
 
-      // Calculates the correct index using modulo to avoid going out of bounds
+      // Calculates the correct testimonial index.
       const index = (startIndex + i) % testimonials.length;
 
-      // Gets the testimonial object from the array
+      // Retrieves the testimonial object from the array
       const t = testimonials[index];
 
-      // Creates a new div element for a testimonial card
+      // Creates a new DOM element for a testimonial card
       const card = document.createElement("div");
 
-      // Assigns a CSS class to the testimonial card
+      // Assigns a CSS class for styling
       card.className = "testimonial-card";
 
-      // Inserts the testimonial text and star rating into the card
+      // Inserts testimonial content using template literals
+      // Star rating is generated dynamically based on the rating value
       card.innerHTML = `
         <p>"${t.text}"</p>
         <div class="stars">
@@ -169,36 +212,36 @@
         </div>
       `;
 
-      // Appends the testimonial card to the grid
+      // Adds the card to the testimonials grid
       grid.appendChild(card);
     }
   }
 
-  // Adds a click event listener to the "next" button
+  
+
+  // Handles clicking the "next" button
   document.getElementById("nextBtn").addEventListener("click", () => {
 
-    // Moves the start index forward
+    // Moves the starting index forward by one
     startIndex = (startIndex + 1) % testimonials.length;
 
-    // Re-renders the testimonials
+    // Re-renders testimonials with the updated index
     renderTestimonials();
   });
 
-  // Adds a click event listener to the "previous" button
+  // Handles clicking the "previous" button
   document.getElementById("prevBtn").addEventListener("click", () => {
 
-    // Moves the start index backward and prevents negative index
+    // Moves the starting index backward
     startIndex = (startIndex - 1 + testimonials.length) % testimonials.length;
 
-    // Re-renders the testimonials
+    // Re-renders testimonials with the updated index
     renderTestimonials();
   });
 
-  // Displays the initial testimonials when the page loads
+  
+
+  // Displays the initial set of testimonials when the page loads
   renderTestimonials();
-</script>
 
 </script>
-
-</body>
-</html>

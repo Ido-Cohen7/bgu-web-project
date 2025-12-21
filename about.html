@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
+    <!-- Defines character encoding -->
     <meta charset="UTF-8">
+
+    <!-- Enables responsive layout on different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
     <title>FutureWize - אודות</title>
-    <link rel="stylesheet" href="designcss.css">
-    
+
+    <!-- Main global stylesheet -->
+    <link rel="stylesheet" href="design.css">
 </head>
+
 <body>
 
-<!-- ========================== -->
-<!--         NAVBAR             -->
-<!-- ========================== -->
 
+<!--NAVBAR-->
+<!-- Main navigation bar shared across all pages -->
 <header class="navbar">
+
+    <!-- Right section: logo and navigation links -->
     <div class="nav-right">
+        <!-- Logo linking to homepage -->
         <a href="index.html">
-            <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+            <img src="./images/logo image.jpg"
+                 alt="FutureWize Logo"
+                 class="logo-img">
         </a>
 
+        <!-- Main navigation links -->
         <nav class="nav-links">
             <a href="index.html">בית</a>
             <a href="about.html">אודות</a>
@@ -28,29 +40,38 @@
         </nav>
     </div>
 
+    <!-- Left section: authentication-related actions -->
     <div class="nav-left">
-      <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
 
-<button id="logoutBtn"
-        onclick="logout()"
-        style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
-    התנתקות
-</button>
+        <!-- Dynamic welcome message (visible only when user is logged in) -->
+        <span id="welcomeUser"
+              style="color:white; font-size:16px; display:none;">
+        </span>
 
-<a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
-<a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
+        <!-- Logout button shown only for authenticated users -->
+        <button id="logoutBtn"
+                onclick="logout()"
+                style="display:none; background:none; border:none;
+                       color:var(--accent); cursor:pointer; font-weight:600;">
+            התנתקות
+        </button>
+
+        <!-- Login and registration buttons (hidden after login) -->
+        <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
+        <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
 
     </div>
 </header>
 
 
-<!-- ========================== -->
-<!--         ABOUT HERO         -->
-<!-- ========================== -->
-
+<!--ABOUT HERO-->
+<!-- Hero section introducing the organization -->
 <section class="about-hero">
+
+    <!-- Section heading with fade-in animation -->
     <h2 class="fade-in">מי אנחנו?</h2>
 
+    <!-- Short description explaining the mission and values -->
     <p class="fade-in-delay">
         אנו ב-FutureWize, יוזמה חינוכית המקדמת תלמידים לחשוב ולפעול כמו יזמים,
         דרך שילוב של כלי AI, סימולציות, למידה חווייתית וכלים אינטראקטיביים
@@ -58,30 +79,40 @@
     </p>
 </section>
 
-
-<!-- ========================== -->
-<!--         TEAM SECTION       -->
-<!-- ========================== -->
-
+<!--TEAM SECTION-->
+<!-- Section presenting the team members -->
 <section class="team-section">
+
+    <!-- Section title -->
     <h2>הצוות שלנו</h2>
 
+    <!-- Grid container for team member cards -->
     <div class="team-grid">
 
-        <!-- מאי -->
+        <!-- Team member: Mai -->
         <div class="team-card">
-            <img src="/images/May profile.jpg" alt="מאי רוזנצווייג" class="team-img">
+            <img src="/images/May profile.jpg"
+                 alt="מאי רוזנצווייג"
+                 class="team-img">
+
             <h3>מאי רוזנצווייג</h3>
+
+            <!-- Team member description -->
             <p>
                 בוגרת תואר שני במנהל עסקים, מומחית ביזמות וחינוך חדשני.
                 מובילה פרויקטים חדשניים ופיתוח תוכניות למידה ויזמות בבתי ספר.
             </p>
         </div>
 
-        <!-- גל -->
+        <!-- Team member: Gal -->
         <div class="team-card">
-            <img src="./images/Gal profile.jpg" alt="גל זלמונוביץ'" class="team-img">
+            <img src="./images/Gal profile.jpg"
+                 alt="גל זלמונוביץ'"
+                 class="team-img">
+
             <h3>גל זלמונוביץ'</h3>
+
+            <!-- Team member description -->
             <p>
                 בוגר תואר ראשון בפיננסים ויזמות, מנחה יזמות עם ניסיון בבניית האקתונים,
                 הדרכת קבוצות ופיתוח תכניות יזמות לילדים ולנוער.
@@ -92,13 +123,14 @@
 </section>
 
 
-<!-- ========================== -->
-<!--       OFFER SECTION        -->
-<!-- ========================== -->
-
+<!--OFFER SECTION-->
+<!-- Section describing the programs and services offered -->
 <section class="offer-section">
+
+    <!-- Section title -->
     <h2>מה אנחנו מציעים?</h2>
 
+    <!-- Detailed description of the educational offerings -->
     <p>
         FutureWize מציעה מגוון תוכניות יזמות וחינוך פיננסי לבתי ספר,
         החל מסדנאות כיתתיות ועד תוכניות עומק שכבתיות ותחרויות בין-שכבתיות.
@@ -107,14 +139,12 @@
     </p>
 </section>
 
-
-<!-- ========================== -->
-<!--            FOOTER          -->
-<!-- ========================== -->
-
+<!--FOOTER-->
 <footer class="footer">
     <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
 </footer>
+
+<!-- Authentication script handling login state and UI updates -->
 <script src="auth.js"></script>
 
 </body>

@@ -2,20 +2,38 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Enables responsive layout on different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
     <title>FutureWize - צור קשר</title>
-    <link rel="stylesheet" href="designcss.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Main global stylesheet -->
+    <link rel="stylesheet" href="design.css">
+
+    <!-- Bootstrap Icons library for contact icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 
 <body>
 
+
+<!--NAVBAR-->
+<!-- Main navigation bar shared across all pages -->
 <header class="navbar">
+
+    <!-- Right section: logo and navigation links -->
     <div class="nav-right">
+        <!-- Logo linking to homepage -->
         <a href="index.html">
-            <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+            <img src="./images/logo image.jpg"
+                 alt="FutureWize Logo"
+                 class="logo-img">
         </a>
 
+        <!-- Main site navigation -->
         <nav class="nav-links">
             <a href="index.html">בית</a>
             <a href="about.html">אודות</a>
@@ -25,70 +43,88 @@
         </nav>
     </div>
 
+    <!-- Left section: authentication-related actions -->
     <div class="nav-left">
-       <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
 
-<button id="logoutBtn"
-        onclick="logout()"
-        style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
-    התנתקות
-</button>
+        <!-- Welcome message displayed only when the user is logged in -->
+        <span id="welcomeUser"
+              style="color:white; font-size:16px; display:none;">
+        </span>
 
-<a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
-<a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
+        <!-- Logout button shown only for authenticated users -->
+        <button id="logoutBtn"
+                onclick="logout()"
+                style="display:none; background:none; border:none;
+                       color:var(--accent); cursor:pointer; font-weight:600;">
+            התנתקות
+        </button>
+
+        <!-- Login and registration buttons (hidden after login) -->
+        <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
+        <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
 
     </div>
 </header>
 
-
+<!--CONTACT HEADER-->
+<!-- Page heading with entrance animation -->
 <section class="contact-header">
-    <h1 class ="fade-in" > נשמח לעמוד לרשותכם בכל פנייה</h1>
+    <h1 class="fade-in">נשמח לעמוד לרשותכם בכל פנייה</h1>
 </section>
 
-
+<!--CONTACT SECTION-->
+<!-- Main contact information wrapper -->
 <section class="contact-wrapper">
 
+    <!-- Unified contact card -->
     <div class="contact-card unified-contact">
 
+        <!-- Section title -->
         <h2>פרטי קשר</h2>
 
-        <!-- אייקונים -->
+        <!--CONTACT ICONS-->
+        <!-- Clickable icons for quick contact -->
         <div class="contact-icons">
 
-            <!-- מייל -->
-            <a href="mailto:Futurewize2025@gmail.com">
-                <i class="bi bi-envelope contact-icon"></i>
-            </a>
+            <!-- Email link -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Futurewize2025@gmail.com"
+            target="_blank">
+            <i class="bi bi-envelope contact-icon"></i> </a>
 
-            <!-- לינקדאין מאי -->
-            <a href="https://www.linkedin.com/in/may-rosenzweig-5539611b1/" target="_blank">
+
+
+            <!-- LinkedIn profile -->
+            <a href="https://www.linkedin.com/in/may-rosenzweig-5539611b1/"
+               target="_blank">
                 <i class="bi bi-linkedin contact-icon"></i>
             </a>
 
-            
-
-            <!-- טלפון -->
+            <!-- Phone call link -->
             <a href="tel:052-3872696">
                 <i class="bi bi-telephone contact-icon"></i>
             </a>
 
         </div>
-         <div class="contact-details">
+
+      
+        <!-- Text-based contact information -->
+        <div class="contact-details">
             <p><strong>טלפון מאי:</strong> 052-3872696</p>
             <p><strong>טלפון גל:</strong> 054-6588988</p>
             <p><strong>מייל עסקי:</strong> Futurewize2025@gmail.com</p>
         </div>
 
-
-        
     </div>
 
 </section>
 
+<!--FOOTER-->
 
 <footer class="footer">
     <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
 </footer>
+
+<!-- Authentication script handling login state and UI updates -->
 <script src="auth.js"></script>
 
 </body>

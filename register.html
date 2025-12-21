@@ -2,23 +2,35 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enables responsive layout on different screen sizes -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title -->
   <title>הרשמה – FutureWize</title>
-  <link rel="stylesheet" href="designcss.css">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="design.css">
 </head>
 
 <body>
 
-<!-- ========================== -->
-<!--           NAVBAR           -->
-<!-- ========================== -->
 
+<!--NAVBAR-->
+
+<!-- Main navigation bar shared across the website -->
 <header class="navbar">
+
+  <!-- Right section: logo and navigation links -->
   <div class="nav-right">
+    <!-- Logo linking to homepage -->
     <a href="index.html">
-      <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+      <img src="./images/logo image.jpg"
+           alt="FutureWize Logo"
+           class="logo-img">
     </a>
 
+    <!-- Navigation links -->
     <nav class="nav-links">
       <a href="index.html">בית</a>
       <a href="about.html">אודות</a>
@@ -28,76 +40,93 @@
     </nav>
   </div>
 
+  <!-- Left section: authentication actions -->
   <div class="nav-left">
     <a href="login.html" class="nav-btn login-btn">התחברות</a>
     <a href="register.html" class="nav-btn register-btn">הרשמה</a>
   </div>
 </header>
 
-<!-- ========================== -->
-<!--        REGISTER FORM       -->
-<!-- ========================== -->
 
+<!--REGISTER FORM-->
+
+<!-- Registration form container -->
 <section class="form-container">
 
+  <!-- Page heading -->
   <h1>הרשמה למערכת</h1>
   <p>הצטרפו אלינו וקבלו גישה להזמנות, סדנאות ואזור אישי</p>
 
-  <!-- חשוב: novalidate -->
+  <!--Novalidate disables the browser's default validation.
+    Custom JavaScript validation is handled manually below.-->
   <form class="register-form" id="registerForm" novalidate>
 
+    <!-- Full name input -->
     <label for="fullname">שם מלא:</label>
     <input type="text" id="fullname" required>
 
+    <!-- Email input -->
     <label for="email">אימייל:</label>
-    <input type="text" id="email" placeholder="name@gmail.com" required>
+    <input type="text"
+           id="email"
+           placeholder="name@gmail.com"
+           required>
 
+    <!-- Phone number input -->
     <label for="phone">מספר טלפון:</label>
-    <input type="text" id="phone" placeholder="05XXXXXXXX" required>
+    <input type="text"
+           id="phone"
+           placeholder="05XXXXXXXX"
+           required>
 
+    <!-- Password input -->
     <label for="password">סיסמה:</label>
     <input type="password" id="password" required>
 
+    <!-- Password confirmation -->
     <label for="password2">אישור סיסמה:</label>
     <input type="password" id="password2" required>
 
+    <!-- Form submission button -->
     <button type="submit" class="btn">צור חשבון</button>
 
   </form>
 
 </section>
 
-<!-- ========================== -->
-<!--           FOOTER           -->
-<!-- ========================== -->
+
+<!--FOOTER-->
 
 <footer class="footer">
   © 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר
 </footer>
 
-<!-- ========================== -->
-<!--           SCRIPT           -->
-<!-- ========================== -->
+<!--SCRIPTS-->
 
 <script>
+/*
+  Handles registration form submission.
+  Performs client-side validation before saving data and redirecting.
+*/
 document.getElementById("registerForm").addEventListener("submit", function (event) {
+
+  // Prevent default form submission behavior
   event.preventDefault();
 
+  // Retrieve input elements
   const fullname = document.getElementById("fullname");
   const email = document.getElementById("email");
   const phone = document.getElementById("phone");
   const password = document.getElementById("password");
   const password2 = document.getElementById("password2");
 
-  // Reset errors
+  // Clear any previous validation error messages
   [fullname, email, phone, password, password2].forEach(input => {
     input.setCustomValidity("");
   });
 
-  /* ========================= */
-  /* EMAIL VALIDATION */
-  /* ========================= */
 
+  // Regular expression to validate email format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(email.value)) {
@@ -106,10 +135,8 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
     return;
   }
 
-  /* ========================= */
-  /* PHONE VALIDATION */
-  /* ========================= */
-
+ 
+  // Phone number validation: must start with 0 and contain 10 digits
   const phoneRegex = /^0\d{9}$/;
 
   if (!phoneRegex.test(phone.value)) {
@@ -120,26 +147,23 @@ document.getElementById("registerForm").addEventListener("submit", function (eve
     return;
   }
 
-  /* ========================= */
-  /* PASSWORD MATCH */
-  /* ========================= */
 
+  // Ensure password and confirmation match
   if (password.value !== password2.value) {
     password2.setCustomValidity("הסיסמאות אינן תואמות");
     password2.reportValidity();
     return;
   }
 
-  /* ========================= */
-  /* SUCCESS */
-  /* ========================= */
-
+ 
+  // Save username locally and redirect to homepage
   alert("ההרשמה בוצעה בהצלחה!");
   localStorage.setItem("username", fullname.value);
   window.location.href = "index.html";
 });
 </script>
 
+<!-- Authentication script (login state, logout, UI updates) -->
 <script src="auth.js"></script>
 
 </body>

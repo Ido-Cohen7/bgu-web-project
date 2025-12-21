@@ -2,101 +2,151 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
+
+  <!-- Enables responsive layout on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>FutureWize - התחברות</title>
 
-  <!-- קובץ העיצוב הכללי -->
-  <link rel="stylesheet" href="designcss.css">
+  <!-- Global stylesheet -->
+  <link rel="stylesheet" href="design.css">
 </head>
+
 <body>
 
-  <!-- סרגל ניווט -->
-  <header class="navbar">
-    <div class="nav-right">
 
-      <a href="index.html">
-        <img src="images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
-      </a>
+<!--NAVBAR-->
+<!-- Main navigation bar shared across all pages -->
+<header class="navbar">
 
-      <nav class="nav-links">
-        <a href="index.html">בית</a>
-        <a href="about.html">אודות</a>
-        <a href="products.html">תוכניות</a>
-        <a href="cart.html">העגלה שלי</a>
-        <a href="contact.html">צור קשר</a>
-      </nav>
-    </div>
+  <!-- Right side: logo and navigation links -->
+  <div class="nav-right">
 
-    <div class="nav-left">
-      <a href="login.html" class="nav-btn login-btn">התחברות</a>
-      <a href="register.html" class="nav-btn register-btn">הרשמה</a>
-    </div>
-  </header>
+    <!-- Logo linking back to homepage -->
+    <a href="index.html">
+      <img src="images/logo image.jpg"
+           alt="FutureWize Logo"
+           class="logo-img">
+    </a>
 
-
-  <!-- טופס התחברות -->
-  <div class="form-container">
-
-    <h1>התחברות</h1>
-    <p>הזן את כתובת המייל והסיסמה שבחרת בעת ההרשמה.</p>
-
-    <form onsubmit="login(event)" class="register-form">
-
-      <label for="email">דוא״ל</label>
-      <input type="email" id="email" required placeholder="yourmail@example.com">
-
-      <label for="password">סיסמה</label>
-      <input type="password" id="password" required placeholder="הקלד סיסמה">
-
-      <button type="submit" class="btn">התחבר</button>
-
-      <p id="errorMsg" style="color:red; display:none; margin-top:10px;">
-        המייל או הסיסמה אינם נכונים
-      </p>
-
-    </form>
-
-    <div class="form-switch">
-      אין לך חשבון?
-      <a href="register.html">להרשמה לחץ כאן</a>
-    </div>
-
+    <!-- Navigation menu -->
+    <nav class="nav-links">
+      <a href="index.html">בית</a>
+      <a href="about.html">אודות</a>
+      <a href="products.html">תוכניות</a>
+      <a href="cart.html">העגלה שלי</a>
+      <a href="contact.html">צור קשר</a>
+    </nav>
   </div>
 
+  <!-- Left side: authentication buttons -->
+  <div class="nav-left">
+    <a href="login.html" class="nav-btn login-btn">התחברות</a>
+    <a href="register.html" class="nav-btn register-btn">הרשמה</a>
+  </div>
+</header>
 
-  <!-- JavaScript -->
-  <script>
-    function login(event) {
-      event.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
+<!--LOGIN FORM-->
+<!-- Login form container -->
+<div class="form-container">
 
-      // נתונים לדוגמה — תחליף בעתיד לרישום אמיתי
-      const validEmail = "ido@gmail.com";
-      const validPass = "1234";
+  <!-- Page heading -->
+  <h1>התחברות</h1>
 
-      if (email === validEmail && password === validPass) {
-        localStorage.setItem("username", "עידו");
-        window.location.href = "index.html";
-      } else {
-        document.getElementById("errorMsg").style.display = "block";
-      }
+  <!-- Short instruction text -->
+  <p>הזן את כתובת המייל והסיסמה שבחרת בעת ההרשמה.</p>
+
+  <!-- Login form -->
+  <!-- onsubmit calls the login() function and prevents default submission -->
+  <form onsubmit="login(event)" class="register-form">
+
+    <!-- Email input field -->
+    <label for="email">דוא״ל</label>
+    <input type="email"
+           id="email"
+           required
+           placeholder="yourmail@example.com">
+
+    <!-- Password input field -->
+    <label for="password">סיסמה</label>
+    <input type="password"
+           id="password"
+           required
+           placeholder="הקלד סיסמה">
+
+    <!-- Submit button -->
+    <button type="submit" class="btn">התחבר</button>
+
+    <!-- Error message shown when login fails -->
+    <p id="errorMsg"
+       style="color:red; display:none; margin-top:10px;">
+      המייל או הסיסמה אינם נכונים
+    </p>
+
+  </form>
+
+  <!-- Link to registration page -->
+  <div class="form-switch">
+    אין לך חשבון?
+    <a href="register.html">להרשמה לחץ כאן</a>
+  </div>
+
+</div>
+
+
+<!--JAVASCRIPT-->
+
+<script>
+  // Handles login form submission
+  function login(event) {
+
+    // Prevents the form from submitting and refreshing the page
+    event.preventDefault();
+
+    // Retrieves and trims user input values
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // Temporary hard-coded credentials (for demo purposes only)
+    const validEmail = "ido@gmail.com";
+    const validPass = "1234";
+
+    // Checks if credentials match the predefined values
+    if (email === validEmail && password === validPass) {
+
+      // Stores the username in localStorage for session persistence
+      localStorage.setItem("username", "עידו");
+
+      // Redirects the user to the homepage after successful login
+      window.location.href = "index.html";
+
+    } else {
+      // Displays an error message if login fails
+      document.getElementById("errorMsg").style.display = "block";
     }
-  </script>
-  <script>
-    const emailInput = document.getElementById("email");
+  }
+</script>
 
-emailInput.addEventListener("input", () => {
-  emailInput.setCustomValidity(""); // מאפס שגיאה
-});
 
-emailInput.addEventListener("invalid", () => {
-  emailInput.setCustomValidity("אנא הזן כתובת אימייל תקינה (כולל @)");
-});
 
-  </script>
+<script>
+
+  // Reference to the email input field
+  const emailInput = document.getElementById("email");
+
+  // Clears any custom validation message while typing
+  emailInput.addEventListener("input", () => {
+    emailInput.setCustomValidity("");
+  });
+
+  // Displays a custom validation message if the email format is invalid
+  emailInput.addEventListener("invalid", () => {
+    emailInput.setCustomValidity("אנא הזן כתובת אימייל תקינה (כולל @)");
+  });
+</script>
+
+<!-- Authentication logic for navbar (login/logout state) -->
 <script src="auth.js"></script>
 
 </body>

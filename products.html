@@ -2,23 +2,35 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Enables responsive layout on different screen sizes -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title shown in the browser tab -->
     <title>FutureWize - תוכניות</title>
-    <link rel="stylesheet" href="designcss.css">
+
+    <!-- Main stylesheet for the entire website -->
+    <link rel="stylesheet" href="design.css">
 </head>
 
 <body>
 
-<!-- ========================== -->
-<!--         NAVBAR             -->
-<!-- ========================== -->
 
+<!--NAVBAR-->
+<!-- Main navigation bar displayed on all pages -->
 <header class="navbar">
+
+    <!-- Right section: logo and navigation links -->
     <div class="nav-right">
+
+        <!-- Logo that links back to the homepage -->
         <a href="index.html">
-            <img src="./images/logo image.jpg" alt="FutureWize Logo" class="logo-img">
+            <img src="./images/logo image.jpg"
+                 alt="FutureWize Logo"
+                 class="logo-img">
         </a>
 
+        <!-- Main navigation menu -->
         <nav class="nav-links">
             <a href="index.html">בית</a>
             <a href="about.html">אודות</a>
@@ -28,38 +40,45 @@
         </nav>
     </div>
 
+    <!-- Left section: authentication-related actions -->
     <div class="nav-left">
-        <span id="welcomeUser" style="color:white; font-size:16px; display:none;"></span>
 
+        <!-- Welcome message shown only when a user is logged in -->
+        <span id="welcomeUser"
+              style="color:white; font-size:16px; display:none;">
+        </span>
+
+        <!-- Logout button (visible only for authenticated users) -->
         <button id="logoutBtn"
                 onclick="logout()"
                 style="display:none; background:none; border:none; color:var(--accent); cursor:pointer; font-weight:600;">
             התנתקות
         </button>
 
+        <!-- Login and registration buttons (shown when user is not logged in) -->
         <a href="login.html" id="loginBtn" class="nav-btn login-btn">התחברות</a>
         <a href="register.html" id="registerBtn" class="nav-btn register-btn">הרשמה</a>
     </div>
 </header>
 
-<!-- ========================== -->
-<!--            HERO            -->
-<!-- ========================== -->
 
+<!--HERO-->
+<!-- Page header section -->
 <section class="hero" style="padding: 80px 20px;">
     <h1>התוכניות שלנו</h1>
     <p>בחרו את סוג הסדנה או התחרות המתאימה לבית הספר שלכם</p>
 </section>
 
-<!-- ========================== -->
-<!--        PROGRAMS GRID       -->
-<!-- ========================== -->
 
+<!--PROGRAMS GRID-->
 <section class="products-grid">
 
-    <!-- 1. יזמות כיתתית -->
+    <!-- 1. Classroom entrepreneurship program -->
     <div class="product-card program-card-link">
-        <img src="./images/IMG-4.jpg" alt="סדנת יזמות כיתתית" class="program-img">
+        <img src="./images/IMG-4.jpg"
+             alt="סדנת יזמות כיתתית"
+             class="program-img">
+
         <div class="card-content"
              data-name="סדנת יזמות – כיתתית"
              data-info="משך הסדנה: 3 שעות
@@ -75,9 +94,12 @@
         </div>
     </div>
 
-    <!-- 2. פיננסי כיתתי -->
+    <!-- 2. Classroom financial education program -->
     <div class="product-card program-card-link">
-        <img src="./images/IMG-2.jpg" alt="סדנת חינוך פיננסי כיתתית" class="program-img">
+        <img src="./images/IMG-2.jpg"
+             alt="סדנת חינוך פיננסי כיתתית"
+             class="program-img">
+
         <div class="card-content"
              data-name="סדנת חינוך פיננסי – כיתתית"
              data-info="משך הסדנה: 3 שעות
@@ -93,9 +115,12 @@
         </div>
     </div>
 
-    <!-- 3. יזמות שכבתית -->
+    <!-- 3. Grade-level entrepreneurship program -->
     <div class="product-card program-card-link">
-        <img src="./images/IMG-3.jpg" alt="סדנת יזמות שכבתית" class="program-img">
+        <img src="./images/IMG-3.jpg"
+             alt="סדנת יזמות שכבתית"
+             class="program-img">
+
         <div class="card-content"
              data-name="סדנת יזמות – שכבתית"
              data-info="משך הסדנה: כ־4 שעות
@@ -111,9 +136,12 @@
         </div>
     </div>
 
-    <!-- 4. פיננסי שכבתית -->
+    <!-- 4. Grade-level financial education program -->
     <div class="product-card program-card-link">
-        <img src="./images/תמונת ילד מחשבון.jpeg" alt="סדנת חינוך פיננסי שכבתית" class="program-img">
+        <img src="./images/תמונת ילד מחשבון.jpeg"
+             alt="סדנת חינוך פיננסי שכבתית"
+             class="program-img">
+
         <div class="card-content"
              data-name="סדנת חינוך פיננסי – שכבתית"
              data-info="משך הסדנה: כ־4 שעות
@@ -129,9 +157,12 @@
         </div>
     </div>
 
-    <!-- 5. האקתון -->
+    <!-- 5. Innovation hackathon -->
     <div class="product-card program-card-link">
-        <img src="./images/IMG - 8.jpg" alt="האקתון חדשנות" class="program-img">
+        <img src="./images/IMG - 8.jpg"
+             alt="האקתון חדשנות"
+             class="program-img">
+
         <div class="card-content"
              data-name="תחרות חדשנות / האקתון"
              data-info="משך הסדנה: יום מלא
@@ -149,35 +180,46 @@
 
 </section>
 
-<!-- ========================== -->
-<!--           FOOTER           -->
-<!-- ========================== -->
 
+<!--FOOTER-->
 <footer class="footer">
     <p>© 2025 FutureWize — חינוך פיננסי ויזמות לבתי ספר</p>
 </footer>
 
-<!-- ========================== -->
-<!--           SCRIPTS          -->
-<!-- ========================== -->
 
+<!--SCRIPTS-->
+
+<!-- Handles login state, logout and user UI updates -->
 <script src="auth.js"></script>
 
 <script>
+  // Select all program card content elements
   const cards = document.querySelectorAll(".products-grid .card-content");
 
   cards.forEach(card => {
+
+    // Store the original card HTML to allow reverting later
     const originalHTML = card.innerHTML;
+
+    // Convert line breaks in data-info to HTML line breaks
     const infoHTML = (card.dataset.info || "").replaceAll("\n", "<br>");
+
+    // Program name used for cart operations
     const programName = card.dataset.name || "תוכנית";
 
+    // Indicates whether the card is currently expanded
     let isExpanded = false;
 
+    /*
+      Handles click events on the "More info" button.
+      Ensures that only clicks on the button trigger the logic.
+    */
     card.addEventListener("click", (e) => {
       if (!e.target.classList.contains("more-info-btn")) return;
       e.preventDefault();
 
       if (!isExpanded) {
+        // Replace card content with detailed information view
         card.innerHTML = `
           <p style="font-size:16px; line-height:1.6;">${infoHTML}</p>
           <div class="card-actions">
@@ -186,18 +228,24 @@
           </div>
         `;
 
+        // Attach add-to-cart logic after content replacement
         card.querySelector(".add-to-cart-btn").addEventListener("click", () => {
           addToCart(programName);
         });
 
         isExpanded = true;
       } else {
+        // Restore the original card layout
         card.innerHTML = originalHTML;
         isExpanded = false;
       }
     });
   });
 
+  /*
+    Adds a selected program to the cart using localStorage.
+    The cart data persists between page reloads.
+  */
   function addToCart(name) {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     cart.push(name);
@@ -205,8 +253,6 @@
     alert("התוכנית נוספה לעגלה");
   }
 </script>
-
-
 
 </body>
 </html>
